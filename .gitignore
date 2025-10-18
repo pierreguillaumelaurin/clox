@@ -1,0 +1,40 @@
+# Compiled object files
+*.o
+*.obj
+
+# Executable binaries
+*.exe
+*.out
+*.elf
+*.bin
+
+# Library files
+*.a
+*.lib
+*.so
+*.dll
+
+# Temporary files and build artifacts
+*.tmp
+*.bak
+*.swp
+*.log
+*.map
+*.lst
+*.dep
+*.sbr
+*.bsc
+*.ncb
+*.suo
+*.user
+*.ilk
+*.pdb
+*.idb
+*.ipch
+
+# Build directories
+build/
+bin/
+obj/
+Debug/
+Release/
