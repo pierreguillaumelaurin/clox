@@ -2,19 +2,22 @@ CC = clang
 CFLAGS = -Wall -Wextra -std=c99 -g
 LDFLAGS =
 
+BUILD_DIR = build
 SRCS = $(wildcard *.c)
-OBJS = $(SRCS:.c=.o)
-TARGET = clox
+OBJS = $(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
+TARGET = $(BUILD_DIR)/clox
 
 .PHONY: all clean
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
+	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS)
 
-%.o: %.c
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -rf $(BUILD_DIR) $(wildcard *.o)
