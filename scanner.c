@@ -79,6 +79,7 @@ static void skipWhitespace() {
       case '\r':
       case '\t':
         advance();
+        break;
      case '\n':
         scanner.line++;
         advance();
@@ -205,7 +206,8 @@ Token scanToken() {
           match('=') ? TOKEN_LESS_EQUAL : TOKEN_LESS);
     case '>':
       return makeToken(
-          match('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);   case '*': return makeToken(TOKEN_STAR);
+          match('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
+    case '*': return makeToken(TOKEN_STAR);
     case '"': return string();
   }
   return errorToken("Unexpected character.");
