@@ -28,6 +28,7 @@ static void runtimeError(const char* format, ...) {
   fprintf(stderr, "[line %d] in script\n", line);
   resetStack();
   vm.objects = NULL;
+  initTable(&vm.strings);
 }
 
 void initVM() {
@@ -35,6 +36,7 @@ void initVM() {
 }
 
 void freeVM() {
+  freeTable(&vm.strings);
   freeObjects();
 }
 
